@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+
+<html lang="pt-br">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="style.css">
+        <title>To-Do List</title>
+    </head>
+
+    <body>
+        
+        <main id="app">
+            
+            <section class="todo-list">
+                
+                
+                <h3>Lista de Tarefas</h3>
+                
+                <div class="all-todos">
+                    <div v-for="item in tarefas" class="single-todo" :class="item.done ? 'done' : ''">
+                        <span @click="setDone(item)">{{ item.tarefa }}</span>
+                    </div>
+                </div>
+
+                <button v-if="tarefas != []" @click="limpar" class="clear">Limpar tudo</button>
+
+                <input @keydown.enter="adicionar" v-model="textIn" type="text" placeholder="Escreva uma nova tarefa...">
+                <button class="add" @click="adicionar">Adicionar</button>
+
+                <div class="instructions">
+                    Instruções:
+                    <ul>
+                        <li>Clique no texto da tarefa para alternar entre feita / não feita</li>
+                        <li>Use o botão limpar tudo para remover todas as tarefas</li>
+                        <li>Use o input para adicionar novas tarefas</li>
+                    </ul>
+                </div>
+            </section>
+
+        </main>
+        <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+        <script src="scripts.js"></script>
+    </body>
+
+</html>
